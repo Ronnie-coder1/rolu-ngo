@@ -1,0 +1,18 @@
+# Secret keys — NEVER commit these
+.env.local
+.env.production
+.env
+
+# Next.js build output
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
