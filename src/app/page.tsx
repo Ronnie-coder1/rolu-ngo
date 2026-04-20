@@ -193,7 +193,6 @@ callback: (response: PaystackResponse) => {
     message: formData.get("message"),
   };
 
- 
 
   try {
     const res = await fetch("/api/contact", {
@@ -212,6 +211,37 @@ callback: (response: PaystackResponse) => {
     showToast("⚠️ Error connecting to server.");
   }
 }
+
+const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.currentTarget);
+  const data = {
+    name: `${formData.get("firstName")} ${formData.get("lastName")}`,
+    email: formData.get("email"),
+    phone: formData.get("phone"),
+    interest: formData.get("interest"),
+    message: formData.get("message"),
+  };
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setVolSuccess(true);
+      showToast("✅ Application submitted!");
+    } else {
+      showToast("❌ Something went wrong.");
+    }
+  } catch (err) {
+    showToast("❌ Error sending message.");
+  }
+};
+
 
   // ── Share impact ─────────────────────────────────────────
   function shareImpact() {
@@ -391,7 +421,9 @@ callback: (response: PaystackResponse) => {
         <div className="volunteer-inner">
           <div className="section-tag">Get Involved</div>
           <h2>Volunteer With Us</h2>
-          <p>Whether you have a few hours or a few months, your contribution matters. Fill out the form below and a member of our team will reach out within 48 hours.</p>
+          <p>Whether you have a few hours or a few months, your contribution matters.
+            Fill out the form below and a member of our team will reach out within 48 hours.</p>
+            
           {volSuccess ? (
             <div className="success-box">
               <div className="success-icon">✅</div>
@@ -399,20 +431,22 @@ callback: (response: PaystackResponse) => {
               <p className="success-sub">We&apos;ll be in touch within 48 hours.</p>
             </div>
           ) : (
-            <form className="vol-form" onSubmit={e=>{e.preventDefault();setVolSuccess(true);showToast("✅ Application submitted!");}}>
-              <div className="form-row-2">
-                <input type="text" placeholder="First Name" required aria-label="First name"/>
-                <input type="text" placeholder="Last Name" required aria-label="Last name"/>
-              </div>
-              <input type="email" placeholder="Email Address" required aria-label="Email address"/>
-              <input type="tel" placeholder="Phone Number" aria-label="Phone number"/>
-              <select aria-label="Area of interest" defaultValue="">
-                <option value="" disabled>Area of Interest</option>
-                {["Education & Tutoring","Healthcare Support","Community Outreach","Fundraising","Environmental Projects","Other"].map(o=><option key={o}>{o}</option>)}
-              </select>
-              <textarea placeholder="Tell us a little about yourself…" aria-label="Personal message"/>
-              <button type="submit" className="btn-submit">Submit Application →</button>
-            </form>
+    <form className="vol-form" onSubmit={handleVolunteerSubmit}>
+  <div className="form-row-2">
+    {/* Notice 'name="firstName"' and 'name="lastName"' */}
+    <input name="firstName" type="text" placeholder="First Name" required />
+    <input name="lastName" type="text" placeholder="Last Name" required />
+  </div>
+  <input name="email" type="email" placeholder="Email Address" required />
+  <input name="phone" type="tel" placeholder="Phone Number" />
+  <select name="interest" defaultValue="">
+    <option value="" disabled>Area of Interest</option>
+    {["Education & Tutoring","Healthcare Support","Community Outreach","Fundraising","Environmental Projects","Other"].map(o=><option key={o} value={o}>{o}</option>)}
+  </select>
+  <textarea name="message" placeholder="Tell us a little about yourself…" />
+  <button type="submit" className="btn-submit">Submit Application →</button>
+</form>
+
           )}
         </div>
       </section>
