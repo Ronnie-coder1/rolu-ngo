@@ -12,24 +12,23 @@ export const metadata: Metadata = {
     url: "https://rolu-ngo.vercel.app/",
     images: [
       {
-        url: "/thumbnail.png",
+        // WhatsApp prefers absolute URLs
+        url: "https://rolu-ngo.vercel.app/thumbnail.png", 
         width: 1200,
         height: 630,
       },
-      
     ],
   },
-  // Twitter must be outside openGraph
   twitter: {
     card: "summary_large_image",
     title: "ROLU — Empowering Communities",
     description: "Join us in making a difference",
-    images: ["/thumbnail.png"],
+    images: ["https://rolu-ngo.vercel.app/thumbnail.png"], // Twitter also prefers absolute URLs
   },
   icons: {
-  icon: "/thumbnail.png?v=1",
-},
-
+    icon: "/thumbnail.png?v=1",
+    apple: "/thumbnail.png?v=1",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
