@@ -16,6 +16,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
       },
+      
     ],
   },
   // Twitter must be outside openGraph
@@ -25,6 +26,10 @@ export const metadata: Metadata = {
     description: "Join us in making a difference",
     images: ["/thumbnail.png"],
   },
+  icons: {
+  icon: "/thumbnail.png?v=1",
+},
+
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
