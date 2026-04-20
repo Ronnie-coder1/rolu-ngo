@@ -6,6 +6,25 @@ export const metadata: Metadata = {
   title: "ROLU — Empowering Communities",
   description: "Volunteer or donate to help ROLU empower communities across Ghana through education, healthcare, and economic development.",
   keywords: ["NGO", "Ghana", "volunteer", "donate", "community", "ROLU"],
+  openGraph: {
+    title: "ROLU — Empowering Communities",
+    description: "Join us in making a difference",
+    url: "https://rolu-ngo.vercel.app/",
+    images: [
+      {
+        url: "/thumbnail.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  // Twitter must be outside openGraph
+  twitter: {
+    card: "summary_large_image",
+    title: "ROLU — Empowering Communities",
+    description: "Join us in making a difference",
+    images: ["/thumbnail.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
