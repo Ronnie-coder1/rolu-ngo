@@ -260,42 +260,171 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     <Script src="https://paystack.co" strategy="beforeInteractive" />
     
     {/* ── HEADER ── */}
-    <header>
-    
 
+        <header>
+    
         <div className="header-inner">
           <a href="#hero" className="logo">RO<span>LU.</span></a>
           <ul className="nav-links">
-            {["about","gallery","volunteer","contact"].map(s => (
-              <li key={s}><a href={`#${s}`}>{s.charAt(0).toUpperCase()+s.slice(1)}</a></li>
+            {["about", "gallery", "volunteer", "contact"].map(s => (
+              <li key={s}><a href={`#${s}`}>{s.charAt(0).toUpperCase() + s.slice(1)}</a></li>
             ))}
           </ul>
           <div className="toggle-wrap">
-            <button className={`toggle-btn ${heroMode==="volunteer"?"active":""}`} onClick={()=>setHeroMode("volunteer")}>🤝 I want to Volunteer</button>
-            <button className={`toggle-btn ${heroMode==="donor"?"active":""}`} onClick={()=>setHeroMode("donor")}>💛 I want to Donate</button>
+            <button 
+              className={`toggle-btn ${heroMode === "volunteer" ? "active" : ""}`} 
+              onClick={() => {
+                setHeroMode("volunteer");
+                document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              🤝 I want to Volunteer
+            </button>
+            <button 
+              className={`toggle-btn ${heroMode === "donor" ? "active" : ""}`} 
+              onClick={() => {
+                setHeroMode("donor");
+                document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              💛 I want to Donate
+            </button>
           </div>
           <button className="btn-donate-header" onClick={scrollToWidget}>Donate Now</button>
-          <button
-            className={`hamburger-nav ${mobileOpen?"open":""}`}
-            onClick={()=>setMobileOpen(o=>!o)}
-            aria-label={mobileOpen?"Close menu":"Open menu"}
-          >
-            <span/><span/><span/>
-          </button>
+  <button
+  type="button"
+  className={`hamburger-nav ${mobileOpen ? "open" : ""}`}
+  aria-label="Menu"
+  style={{ position: 'relative', zIndex: 99999, touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' } as React.CSSProperties}
+  onClick={() => setMobileOpen(prev => !prev)}
+  onTouchEnd={(e) => { e.preventDefault(); setMobileOpen(prev => !prev); }}
+>
+  <span></span><span></span><span></span>
+</button>
         </div>
       </header>
 
-      {/* ── MOBILE MENU ── */}
-      <div className={`mobile-menu ${mobileOpen?"open":""}`} onClick={e=>{if(e.target===e.currentTarget)setMobileOpen(false)}}>
-        {["about","gallery","volunteer","contact"].map(s=>(
-          <a key={s} href={`#${s}`} onClick={()=>setMobileOpen(false)}>{s.charAt(0).toUpperCase()+s.slice(1)}</a>
-        ))}
-        <div className="mob-toggle">
-          <button className={`mob-toggle-btn ${heroMode==="volunteer"?"active":""}`} onClick={()=>switchMode("volunteer")}>🤝 Volunteer</button>
-          <button className={`mob-toggle-btn ${heroMode==="donor"?"active":""}`} onClick={()=>switchMode("donor")}>💛 Donate</button>
-        </div>
-        <button className="btn-mob-donate" onClick={scrollToWidget}>Donate Now 💛</button>
-      </div>
+
+          {/* ── MOBILE MENU ── */}
+{mobileOpen && (
+  <div
+    onClick={() => setMobileOpen(false)}
+    style={{
+      position: 'fixed',
+      inset: 0,
+      zIndex: 9998,
+      background: 'rgba(17,28,21,0.92)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0',
+    } as React.CSSProperties}
+  >
+    {/* Close X button */}
+    <button
+      type="button"
+      onClick={() => setMobileOpen(false)}
+      style={{
+        position: 'absolute',
+        top: '1.5rem',
+        right: '1.5rem',
+        background: 'rgba(255,255,255,0.1)',
+        border: '1px solid rgba(255,255,255,0.2)',
+        borderRadius: '50%',
+        width: '44px',
+        height: '44px',
+        color: 'white',
+        fontSize: '1.2rem',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent',
+      } as React.CSSProperties}
+    >
+      ✕
+    </button>
+
+    {/* Nav links */}
+    {[
+      { key: "about", label: "About" },
+      { key: "gallery", label: "Gallery" },
+      { key: "volunteer", label: "Volunteer" },
+      { key: "contact", label: "Contact" },
+    ].map((item, i) => (
+      <a
+        key={item.key}
+        href={`#${item.key}`}
+        onClick={(e) => { e.stopPropagation(); setMobileOpen(false); }}
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: '2.4rem',
+          fontWeight: 900,
+          color: 'white',
+          textDecoration: 'none',
+          padding: '0.6rem 2rem',
+          touchAction: 'manipulation',
+          WebkitTapHighlightColor: 'transparent',
+          opacity: 0.92,
+          letterSpacing: '-0.02em',
+          transition: 'color 0.2s',
+        } as React.CSSProperties}
+      >
+        {item.label}
+      </a>
+    ))}
+
+    {/* Divider */}
+    <div style={{ width: '40px', height: '2px', background: 'rgba(200,150,62,0.6)', borderRadius: '2px', margin: '1.5rem 0' }} />
+
+    {/* Donate Now button */}
+    <button
+      type="button"
+      onClick={(e) => {
+        e.stopPropagation();
+        setMobileOpen(false);
+        setHeroMode("donor");
+        setTimeout(() => {
+          widgetRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 350);
+      }}
+      style={{
+        background: 'linear-gradient(135deg, #c8963e, #f0b955)',
+        color: 'white',
+        border: 'none',
+        borderRadius: '100px',
+        padding: '16px 44px',
+        fontSize: '1.05rem',
+        fontWeight: 700,
+        cursor: 'pointer',
+        minHeight: '52px',
+        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent',
+        boxShadow: '0 8px 32px rgba(200,150,62,0.4)',
+        fontFamily: "'Outfit', sans-serif",
+        letterSpacing: '0.02em',
+      } as React.CSSProperties}
+    >
+      💛 Donate Now
+    </button>
+
+    {/* Bottom tagline */}
+    <p style={{
+      color: 'rgba(255,255,255,0.35)',
+      fontSize: '0.75rem',
+      marginTop: '2rem',
+      fontFamily: "'Outfit', sans-serif",
+      letterSpacing: '0.1em',
+      textTransform: 'uppercase',
+    }}>
+      Empowering Communities · Ghana
+    </p>
+  </div>
+)}
 
       {/* ── HERO ── */}
       <section className="hero-section" id="hero">

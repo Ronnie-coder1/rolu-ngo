@@ -204,15 +204,14 @@ header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.
   .form-row-2 { grid-template-columns:1fr; }
   .lightbox-prev { left:.25rem; } .lightbox-next { right:.25rem; }
 }
-@media (max-width:600px) {
-  .toggle-wrap { display:none; }
-  .header-inner { gap:.75rem; }
-  .hamburger-nav { display:flex; }
-  .gallery-grid { grid-template-columns:1fr; }
-  header { padding:0 1rem; }
-  .btn-donate-header { padding:10px 14px; font-size:.82rem; }
+@media (max-width: 600px) {
+  .toggle-wrap { display: none; }
+  .btn-donate-header { display: none; } /* ADD THIS */
+  .header-inner { gap: .75rem; }
+  .hamburger-nav { display: flex; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  header { padding: 0 1rem; }
 }
-
 
 .contact-form {
   display: flex;
@@ -245,4 +244,88 @@ header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.
 
 .submit-btn:hover {
   opacity: 0.9;
+}
+
+.hamburger-nav span {
+  pointer-events: none; /* Forces the tap to hit the button behind the lines */
+}
+
+.header-inner {
+  z-index: 9999 !important; /* Forces it to the very front */
+  position: relative;
+  touch-action: manipulation; /* Optimizes for mobile tapping */
+}
+
+.hamburger-nav, .toggle-btn {
+  z-index: 10000 !important;
+  cursor: pointer;
+}
+
+
+/* FIND your existing .hamburger-nav block and REPLACE the whole thing with: */
+.hamburger-nav {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 400;                          /* ABOVE everything */
+  touch-action: manipulation;            /* removes 300ms tap delay */
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Fix mobile menu z-index — must be ABOVE header (200) */
+.mobile-menu {
+  z-index: 300;
+}
+
+@media (max-width: 600px) {
+  .toggle-wrap { display: none; }
+  .btn-donate-header { display: none; }  /* ADD THIS */
+  .header-inner { gap: .75rem; }
+  .hamburger-nav { display: flex; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  header { padding: 0 1rem; }
+}
+
+/* iPhone Safari tap fix */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+header {
+  -webkit-transform: translateZ(0);
+}
+
+.hamburger-nav {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 9999;
+}
+
+.mobile-menu {
+  z-index: 300;
+}
+
+.mobile-menu a,
+.mob-toggle-btn,
+.btn-mob-donate {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Add to globals.css */
+.hamburger-nav span {
+  pointer-events: none; /* Tap "goes through" the lines to hit the button */
 }
