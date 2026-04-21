@@ -512,16 +512,40 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             <div className="about-img-badge"><span>6+</span> Years of Hope</div>
           </div>
           <div className="about-text fade-up">
-            <div className="section-tag">Who We Are</div>
-            <h2>We Believe Every Person Deserves to <em>Thrive</em></h2>
-            <p>ROLU was born from a simple question: why do some communities get left behind? Founded in the heart of Ghana, we exist to bridge the gap between resources and the people who need them most.</p>
-            <p>We work in education, healthcare, and economic empowerment — not as outsiders, but as partners. Every program we run is co-designed with the community, because real change comes from within.</p>
-            <p>From school supplies for children who can&apos;t afford them, to vocational training for unemployed youth, to clean water projects — ROLU is there, every step of the way.</p>
-            <div className="vision-box">
-              <p>🌿 <strong>Our Vision:</strong> A Ghana where every child has access to quality education, every family has clean water, and every young person has the opportunity to build a dignified livelihood.</p>
-            </div>
+  <div className="section-tag">Who We Are</div>
+  <h2>We Believe Every Person Deserves to <em>Thrive</em></h2>
+  
+  <p className="mb-4">
+    ROLU was born from a simple question: why do some communities get left behind? Founded in the heart of Ghana, we are a <strong>community-focused non-profit initiative</strong> dedicated to bridging the gap between resources and the people who need them most.
+  </p>
+  
+  <p className="mb-4">
+    We work in <strong>educational support, healthcare, and humanitarian assistance</strong> — not as outsiders, but as partners. Every program we run is co-designed with the community, because real change comes from within.
+  </p>
+
+  {/* ── THE BLENDED ROADMAP (The "Proof" for Paystack) ── */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
+    <div className="p-4 rounded-xl bg-[#fcfbf7] border-l-4 border-[#c8963e]">
+      <h4 className="font-bold text-slate-900 text-sm uppercase mb-1">2026 Goal: Tech for Youth</h4>
+      <p className="text-sm text-slate-600 font-medium">Distributing 50 educational & coding kits to rural students by June.</p>
+    </div>
+    <div className="p-4 rounded-xl bg-[#fcfbf7] border-l-4 border-[#c8963e]">
+      <h4 className="font-bold text-slate-900 text-sm uppercase mb-1">Fund Allocation</h4>
+      <p className="text-sm text-slate-600 font-medium">90% of all public donations go directly to community project implementation.</p>
+    </div>
+  </div>
+
+  <p className="mb-6">
+    From providing school supplies for children to vocational training for unemployed youth and clean water projects — ROLU is there, leveraging technology to empower underserved populations every step of the way.
+  </p>
+
+  <div className="vision-box bg-slate-50 p-6 rounded-2xl italic border border-slate-100">
+    <p>🌿 <strong>Our Vision:</strong> A Ghana where every child has access to quality education, every family has clean water, and every young person has the opportunity to build a dignified livelihood.</p>
+  </div>
+</div>
+
           </div>
-        </div>
+      
       </section>
 
       {/* ── GALLERY ── */}
