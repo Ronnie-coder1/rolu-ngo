@@ -43,10 +43,10 @@ async function verifyPayment(reference: string, amt: number, setThankAmount: any
 
 // ── Gallery data ─────────────────────────────────────────────
 const GALLERY = [
-  { src: "https://images.unsplash.com/photo-1567057419565-4349c49d8a04?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", cap: "Education drive — Accra, 2024" },
-  { src: "https://media.licdn.com/dms/image/v2/D4D22AQHmZRabsCEBuA/feedshare-shrink_800/feedshare-shrink_800/0/1728463121129?e=2147483647&v=beta&t=6iFZHl2vKiIh-c-OSj9cIi_RWKc8wf0pl0D_CykYwJU", cap: "Food relief program — Kumasi, 2024" },
-  { src: "https://tse4.mm.bing.net/th/id/OIP.yPxrY78XCXbpcJQc_3gqYQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Clean water project — Volta Region, 2023" },
-  { src: "https://tse1.mm.bing.net/th/id/OIP.itQl02U0NxCZvRkwU7u3EQHaF7?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Vocational training for women — Tamale, 2023" },
+  { src: "https://images.unsplash.com/photo-1567057419565-4349c49d8a04?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", cap:"Pilot Phase: Education drive — Accra, 2024" },
+  { src: "https://media.licdn.com/dms/image/v2/D4D22AQHmZRabsCEBuA/feedshare-shrink_800/feedshare-shrink_800/0/1728463121129?e=2147483647&v=beta&t=6iFZHl2vKiIh-c-OSj9cIi_RWKc8wf0pl0D_CykYwJU", cap: "Pilot Phase: Food relief program — Kumasi, 2024" },
+  { src: "https://tse4.mm.bing.net/th/id/OIP.yPxrY78XCXbpcJQc_3gqYQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Foundation Work: Clean water project — Volta Region, 2023" },
+  { src: "https://tse1.mm.bing.net/th/id/OIP.itQl02U0NxCZvRkwU7u3EQHaF7?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Foundation Work: Vocational training for women — Tamale, 2023" },
   { src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&q=85", cap: "Free health screening camp — Tema, 2024" },
   { src: "https://tse2.mm.bing.net/th/id/OIP.E7xglCmi1SiBtFhGmPJLXQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Tree planting initiative — Cape Coast, 2024" },
 ];
@@ -245,7 +245,7 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   // ── Share impact ─────────────────────────────────────────
   function shareImpact() {
-    const text = `I just donated ${formatGHS(thankAmount)} to ROLU to empower communities in Ghana! 🌱 Join me: rolu.org`;
+    const text = `I just contributed ${formatGHS(thankAmount)} to support ROLU and empower communities in Ghana! 🌱 Join me: rolu-ngo.vercel.app`;
     if (navigator.share) {
       navigator.share({ title: "I supported ROLU!", text, url: window.location.href });
     } else {
@@ -287,10 +287,10 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 document.getElementById("hero")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              💛 I want to Donate
+              💛 I want to Support
             </button>
           </div>
-          <button className="btn-donate-header" onClick={scrollToWidget}>Donate Now</button>
+          <button className="btn-donate-header" onClick={scrollToWidget}>Support Now</button>
   <button
   type="button"
   className={`hamburger-nav ${mobileOpen ? "open" : ""}`}
@@ -409,7 +409,7 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         letterSpacing: '0.02em',
       } as React.CSSProperties}
     >
-      💛 Donate Now
+      💛 Support Now
     </button>
 
     {/* Bottom tagline */}
@@ -446,13 +446,13 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             <div className="hero-text">
               <div className="hero-tag">Make an Impact</div>
               <h1>Empower a <em>Life</em><br/>Today</h1>
-              <p>Your generous donation funds education, healthcare, and livelihood programs for vulnerable communities across Ghana.</p>
-              <button className="btn-hero" onClick={()=>widgetRef.current?.scrollIntoView({behavior:"smooth",block:"center"})}>Give Now →</button>
+              <p>Your generous contribution supports education, healthcare, and livelihood programs for vulnerable communities across Ghana.</p>
+              <button className="btn-hero" onClick={()=>widgetRef.current?.scrollIntoView({behavior:"smooth",block:"center"})}>Support Now →</button>
             </div>
 
             {/* Donation widget */}
             <div className="donation-widget" id="donation-widget" ref={widgetRef}>
-              <h3>Make a Donation</h3>
+              <h3>Support the Initiative</h3>
               <p>Choose an amount or enter your own</p>
               <div className="amount-grid">
                 {AMOUNTS.map(a=>(
@@ -482,7 +482,7 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 ))}
               </div>
               <button className="btn-pay" onClick={handleDonate} disabled={paying}>
-                {paying ? "Processing…" : `💳 Donate ${formatGHS(effectiveAmount||0)}`}
+                {paying ? "Processing…" : `💳 Support with ${formatGHS(effectiveAmount||0)}`}
               </button>
               <div className="payment-logos">
                 <span className="pay-badge momo">MoMo</span>
@@ -509,7 +509,7 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         <div className="about-inner">
           <div className="about-img-wrap fade-up">
             <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&q=80" alt="ROLU volunteers working with community members in Ghana"/>
-            <div className="about-img-badge"><span>6+</span> Years of Hope</div>
+            <div className="about-img-badge"><span>EST.</span>2024</div>
           </div>
           <div className="about-text fade-up">
   <div className="section-tag">Who We Are</div>
@@ -531,7 +531,10 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     </div>
     <div className="p-4 rounded-xl bg-[#fcfbf7] border-l-4 border-[#c8963e]">
       <h4 className="font-bold text-slate-900 text-sm uppercase mb-1">Fund Allocation</h4>
-      <p className="text-sm text-slate-600 font-medium">90% of all public donations go directly to community project implementation.</p>
+      <p className="text-sm text-slate-600 font-medium">
+  90% of all public contributions go directly to community project implementation.
+</p>
+
     </div>
   </div>
 

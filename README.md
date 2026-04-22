@@ -1,10 +1,10 @@
-# ROLU NGO Platform
+# ROLU iNItiative Platform
 
 A full-stack web application built to support community initiatives in Ghana.
 
 ## Features
 - **Frontend**: Built with **React** and **Next.js** for a fast, responsive user interface.
-- **Donation System**: Integrated with **Paystack** to accept Mobile Money and card payments.
+- **Support System**: Integrated with **Paystack** to accept Mobile Money and card payments.
 - **Contact System**: A secure contact form using **Nodemailer** and **Gmail** API.
 - **Backend**: **Next.js API Routes** for secure server-side processing.
 

@@ -4,8 +4,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ROLU — Empowering Communities",
-  description: "Volunteer or donate to help ROLU empower communities across Ghana through education, healthcare, and economic development.",
-  keywords: ["NGO", "Ghana", "volunteer", "donate", "community", "ROLU"],
+  description:"Join the ROLU Initiative to empower communities across Ghana through education, healthcare, and economic development support.",
+  keywords: ["Initiative", "Ghana", "volunteer", "support", "community", "ROLU"],
   openGraph: {
     title: "ROLU — Empowering Communities",
     description: "Join us in making a difference",
