@@ -498,7 +498,7 @@ const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       {/* ── IMPACT STRIP ── */}
       <div className="impact-strip">
         <div className="impact-strip-inner">
-          {[["2,400+","Lives Impacted"],["150+","Active Volunteers"],["12","Communities Served"],["6yrs","Of Service"]].map(([n,l])=>(
+          {[["2,400+","Lives Impacted"],["150+","Active Volunteers"],["12","Communities Served"],["Pilot", "Phase"]].map(([n,l])=>(
             <div key={l}><div className="impact-num">{n}</div><div className="impact-label">{l}</div></div>
           ))}
         </div>
