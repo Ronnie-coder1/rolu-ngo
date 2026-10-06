@@ -46,9 +46,7 @@ const GALLERY = [
   { src: "https://images.unsplash.com/photo-1567057419565-4349c49d8a04?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", cap:"Pilot Phase: Education drive — Accra, 2024" },
   { src: "https://media.licdn.com/dms/image/v2/D4D22AQHmZRabsCEBuA/feedshare-shrink_800/feedshare-shrink_800/0/1728463121129?e=2147483647&v=beta&t=6iFZHl2vKiIh-c-OSj9cIi_RWKc8wf0pl0D_CykYwJU", cap: "Pilot Phase: Food relief program — Kumasi, 2024" },
   { src: "https://tse4.mm.bing.net/th/id/OIP.yPxrY78XCXbpcJQc_3gqYQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Foundation Work: Clean water project — Volta Region, 2023" },
-  { src: "https://tse1.mm.bing.net/th/id/OIP.itQl02U0NxCZvRkwU7u3EQHaF7?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Foundation Work: Vocational training for women — Tamale, 2023" },
-  { src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1200&q=85", cap: "Free health screening camp — Tema, 2024" },
-  { src: "https://tse2.mm.bing.net/th/id/OIP.E7xglCmi1SiBtFhGmPJLXQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3", cap: "Tree planting initiative — Cape Coast, 2024" },
+  }
 ];
 
 const AMOUNTS = [50, 100, 200, 500, 1000, 2000];
